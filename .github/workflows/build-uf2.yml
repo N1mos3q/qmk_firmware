@@ -1,4 +1,25 @@
+name: Build QMK Firmware
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
-  KEYBOARD: sigmapad 
+  KEYBOARD: sigmapad
   KEYMAP: default
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Install QMK and Build
+      run: |
+        # Tutaj wpisuje się komendy instalujące QMK i kompilujące firmware
+        # np. qmk compile -kb ${{ env.KEYBOARD }} -km ${{ env.KEYMAP }}
